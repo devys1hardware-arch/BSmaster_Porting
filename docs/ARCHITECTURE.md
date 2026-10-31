@@ -290,7 +290,7 @@ TXWindow (사용자 입력)
 | 8 | `DataTypes/Filter_Datatypes.h`, `Filter/` | 6천 줄 | `bsmaster/core/filters.py` (단일 ID/범위 필터 + Pass/Stop, GUI 연동) | 중간 | ✅ 완료 |
 | 9 | `DataTypes/Log_Datatypes.h`, `FrameProcessor/` | 8.9천 줄 | `bsmaster/core/logging.py` | 중간 | 예정 |
 | 10 | `TXWindow/`, `SignalWatch/`, `SigGrphWnd/` | 2.2만 줄 | `bsmaster/gui/` 하위 위젯 | 중간 | 예정 |
-| 11 | `DataTypes/J1939_DataTypes.h`, `UDS_Protocol/` | 4천 줄+ | `bsmaster/j1939/` (29비트 ID 분해·PGN·메시지 타입) | 낮음 | J1939 기본 완료 |
+| 11 | `DataTypes/J1939_DataTypes.h`, `UDS_Protocol/` | 4천 줄+ | `bsmaster/j1939/` (29비트 ID 분해·PGN·메시지 타입), `bsmaster/uds/` (서비스·NRC·ISO-TP) | 낮음 | J1939·UDS 기본 완료 |
 | 12 | `NodeSimEx/` | 3.3만 줄 | 재설계 (Python 가상 노드) | 낮음 | 장기 |
 | 13 | `CAN_*` / `LIN_*` 드라이버 DLL | 20만 줄+ | **이식 제외** | — | 제외 |
 | 14 | `DIL_Interface/` 하드웨어 선택 UI | — | 시뮬레이션 모드로 대체 | — | 제외 |
