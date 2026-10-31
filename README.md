@@ -1,6 +1,6 @@
 # BSmaster_Porting
 
-BUSMASTER([rbei-etas/busmaster](https://github.com/rbei-etas/busmaster), 오픈소스 CAN/LIN 버스 분석기)의 Python 포팅 프로젝트.
+BUSMASTER([rbei-etas/busmaster](https://github.com/rbei-etas/busmaster), 오픈소스 CAN/LIN 버스 분석기, 약 50.8만 줄)의 Python 포팅 프로젝트.
 
 - **언어**: Python 3.11+
 - **GUI**: PySide6 (Qt for Python)
