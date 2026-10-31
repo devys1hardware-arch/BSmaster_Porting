@@ -287,7 +287,7 @@ TXWindow (사용자 입력)
 | 5 | `Format Converter/DBC2DBFConverter` (`dbc_dbf_Lexer.l`) | — | `bsmaster/dbc/parser.py` (`DbcDatabase`, Motorola 시작비트 변환 포함) | 높음 | ✅ 완료 |
 | 6 | `Format Converter/AscLogConverter`, `BlfLogConverter`, `BlfLibrary` | — | `bsmaster/logconv/` (`frames`/`asc`/`blf`, zlib 컨테이너·CAN_MESSAGE 처리) | 높음 | ✅ 완료 |
 | 7 | `Application/` (MFC 메인 프레임) | 225파일 | `bsmaster/gui/` (메인 윈도우 + 메시지/시그널/전송 도크, 시뮬레이션) | 높음 | ✅ 완료 |
-| 8 | `DataTypes/Filter_Datatypes.h`, `Filter/` | 6천 줄 | `bsmaster/core/filter.py` | 중간 | 예정 |
+| 8 | `DataTypes/Filter_Datatypes.h`, `Filter/` | 6천 줄 | `bsmaster/core/filters.py` (단일 ID/범위 필터 + Pass/Stop, GUI 연동) | 중간 | ✅ 완료 |
 | 9 | `DataTypes/Log_Datatypes.h`, `FrameProcessor/` | 8.9천 줄 | `bsmaster/core/logging.py` | 중간 | 예정 |
 | 10 | `TXWindow/`, `SignalWatch/`, `SigGrphWnd/` | 2.2만 줄 | `bsmaster/gui/` 하위 위젯 | 중간 | 예정 |
 | 11 | `DataTypes/J1939_DataTypes.h`, `UDS_Protocol/` | 4천 줄+ | `bsmaster/core/j1939.py`, `udS.py` | 낮음 | 예정 |

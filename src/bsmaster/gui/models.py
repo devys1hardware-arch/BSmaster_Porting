@@ -8,20 +8,23 @@ from __future__ import annotations
 
 from PySide6.QtCore import QAbstractTableModel, QModelIndex, Qt
 
+from bsmaster.core.filters import FilterSet
 from bsmaster.logconv.frames import LogFrame
 
 COLUMNS = ["시간", "Tx/Rx", "채널", "ID", "DLC", "데이터"]
 
 
 class MessageTableModel(QAbstractTableModel):
-    """로그 프레임 테이블 모델."""
+    """로그 프레임 테이블 모델. `FilterSet`으로 표시 필터링 지원."""
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self._frames: list[LogFrame] = []
+        self._visible: list[int] = []
+        self._filter: FilterSet | None = None
 
     def rowCount(self, parent: QModelIndex = QModelIndex()) -> int:
-        return len(self._frames)
+        return len(self._visible)
 
     def columnCount(self, parent: QModelIndex = QModelIndex()) -> int:
         return len(COLUMNS)
@@ -29,7 +32,7 @@ class MessageTableModel(QAbstractTableModel):
     def data(self, index: QModelIndex, role: int = Qt.DisplayRole):
         if not index.isValid() or role != Qt.DisplayRole:
             return None
-        frame = self._frames[index.row()]
+        frame = self._frames[self._visible[index.row()]]
         col = index.column()
         if col == 0:
             return f"{frame.timestamp:.6f}"
@@ -52,14 +55,28 @@ class MessageTableModel(QAbstractTableModel):
         return None
 
     def append_frame(self, frame: LogFrame) -> None:
-        row = len(self._frames)
-        self.beginInsertRows(QModelIndex(), row, row)
         self._frames.append(frame)
-        self.endInsertRows()
+        if self._filter is None or self._filter.passes(frame):
+            row = len(self._visible)
+            self.beginInsertRows(QModelIndex(), row, row)
+            self._visible.append(len(self._frames) - 1)
+            self.endInsertRows()
 
     def clear(self) -> None:
         self.beginResetModel()
         self._frames.clear()
+        self._visible.clear()
+        self.endResetModel()
+
+    def set_filter(self, filter_set: FilterSet | None) -> None:
+        """표시 필터 설정 (None이면 전체 표시)."""
+        self.beginResetModel()
+        self._filter = filter_set
+        if filter_set is None:
+            self._visible = list(range(len(self._frames)))
+        else:
+            self._visible = [i for i, f in enumerate(self._frames)
+                             if filter_set.passes(f)]
         self.endResetModel()
 
     @property

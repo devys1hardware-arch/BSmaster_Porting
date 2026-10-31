@@ -102,3 +102,23 @@ def test_sim_tick_adds_frame(app):
     win._on_sim_tick()
     win.stop_simulation()
     assert win.message_dock.frame_count == 2
+
+
+def test_message_dock_filter(app):
+    win = MainWindow()
+    dock = win.message_dock
+    dock.add_frame(LogFrame(msg_id=0x100, direction="Rx", data=b"\x01"))
+    dock.add_frame(LogFrame(msg_id=0x200, direction="Rx", data=b"\x02"))
+    dock.add_frame(LogFrame(msg_id=0x100, direction="Tx", data=b"\x03"))
+    assert dock.frame_count == 3
+
+    dock.from_edit.setText("100")
+    dock.to_edit.setText("100")
+    dock.filter_check.setChecked(True)
+    assert dock.frame_count == 2  # 0x100 두 건
+
+    dock.dir_combo.setCurrentText("Tx")
+    assert dock.frame_count == 1  # Tx 한 건
+
+    dock.filter_check.setChecked(False)
+    assert dock.frame_count == 3  # 필터 해제
