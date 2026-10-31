@@ -23,6 +23,7 @@
 - **2026-10-31 — Phase 9 로깅 완료**: `SLOGTRIGGER`/`SLOGINFO` → `bsmaster/core/logging.py` (시작/정지/셔틀 트리거, 필터 연동, ASC/BLF 저장, append 모드). 93개 테스트 통과.
 - **2026-10-31 — Phase 10 시그널 그래프 완료**: `SigGrphWnd` → `bsmaster/gui/docks/graph_dock.py` (QPainter 플롯, DBC 시그널 실시간 플로팅, 하단 도크). 96개 테스트 통과.
 - **2026-10-31 — Phase 11 LIN 기본 완료**: `STLIN_MSG` → `bsmaster/lin/` (보호 ID 패리티·클래식/향상 체크섬·프레임 검증). 104개 테스트 통과.
+- **2026-10-31 — Phase 12 하드웨어 어댑터 완료**: 벤더 DLL 대신 `bsmaster/hw/` (python-can 기반 `HardwareBus`, Vector VN1630·PEAK USB CAN FD 프리셋, Kvaser 추후). 108개 테스트 통과.
 
 ## 단계
 

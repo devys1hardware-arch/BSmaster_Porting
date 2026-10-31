@@ -293,7 +293,7 @@ TXWindow (사용자 입력)
 | 11 | `DataTypes/J1939_DataTypes.h`, `UDS_Protocol/` | 4천 줄+ | `bsmaster/j1939/` (29비트 ID 분해·PGN·메시지 타입), `bsmaster/uds/` (서비스·NRC·ISO-TP) | 낮음 | J1939·UDS 기본 완료 |
 | 12 | `NodeSimEx/` | 3.3만 줄 | `bsmaster/nodesim/` (VirtualNode + VirtualBus, DBC 시그널 송신) | 낮음 | ✅ 기본 완료 |
 | 12-2 | LIN (`STLIN_MSG`, LIN 2.x) | — | `bsmaster/lin/` (프레임·보호ID 패리티·체크섬) | 중간 | ✅ 기본 완료 |
-| 13 | `CAN_*` / `LIN_*` 드라이버 DLL | 20만 줄+ | **이식 제외** | — | 제외 |
+| 13 | `CAN_*` / `LIN_*` 드라이버 DLL | 20만 줄+ | `bsmaster/hw/` (python-can 어댑터: Vector VN1630·PEAK USB CAN FD, Kvaser 추후) | — | ✅ 어댑터 완료 |
 | 14 | `DIL_Interface/` 하드웨어 선택 UI | — | 시뮬레이션 모드로 대체 | — | 제외 |
 
 ## 7. 리스크 및 설계 판단
