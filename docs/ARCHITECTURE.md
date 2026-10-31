@@ -281,8 +281,8 @@ TXWindow (사용자 입력)
 | # | 원본 모듈 (C++) | 규모 | Python 모듈 | 우선순위 | 상태 |
 |---|----------------|------|-------------|----------|------|
 | 1 | `Include/Struct_CAN_.h` | — | `bsmaster/core/datatypes.py` (`CanFrame`, `CanError`) | 최우선 | ✅ 완료 |
-| 2 | `DataTypes/MsgSignal_Datatypes.h` (`sSIGNALS`, `sMESSAGE`, `SMSGENTRY`) | 240줄 | `bsmaster/core/msgsignal.py` (`DbSignal`, `DbMessage`, `MessageDatabase`) | 최우선 | 🔄 진행 중 |
-| 3 | `sSIGNALS::vSetSignalValue`, `un64GetBitMask` | — | `bsmaster/core/msgsignal.py` (`encode_signal`, `decode_signal`) | 최우선 | 예정 |
+| 2 | `DataTypes/MsgSignal_Datatypes.h` (`sSIGNALS`, `sMESSAGE`, `SMSGENTRY`) | 240줄 | `bsmaster/core/msgsignal.py` (`DbSignal`, `DbMessage`, `MessageDatabase`) | 최우선 | ✅ 완료 |
+| 3 | `sSIGNALS::vSetSignalValue`, `un64GetBitMask` | — | `bsmaster/core/msgsignal.py` (`encode_signal`, `decode_signal`) | 최우선 | ✅ 완료 |
 | 4 | `Application/MsgSignal.h` (`CMsgSignal`) | — | `bsmaster/core/database.py` | 높음 | 예정 |
 | 5 | `Format Converter/DBC2DBFConverter` (`dbc_dbf_Lexer.l`) | — | `bsmaster/dbc/parser.py` | 높음 | 스켈레톤 |
 | 6 | `Format Converter/AscLogConverter`, `BlfLogConverter`, `BlfLibrary` | — | `bsmaster/logconv/` | 높음 | 스켈레톤 |
