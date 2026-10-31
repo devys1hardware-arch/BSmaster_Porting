@@ -17,6 +17,7 @@
 - **2026-10-31 — Phase 3 완료**: 로그 컨버터 — ASC 리더/라이터, BLF 리더/라이터 (원본 `BlfFormat.h` 구조체 레이아웃·zlib 컨테이너·CAN_MESSAGE 그대로 재현). 41개 테스트 통과.
 - **2026-10-31 — Phase 4 완료**: PySide6 GUI 확장 — 메시지 윈도우 도크, DBC 시그널 해석 도크, Tx 전송 패널, DBC/로그 열기 메뉴, 가상 시뮬레이션. 48개 테스트 통과 (오프스크린).
 - **2026-10-31 — Phase 5 필터 완료**: `SFILTER_CAN`/`bDoesFrameOccur` → `bsmaster/core/filters.py` (단일 ID/ID 범위 + 채널/방향/ID타입/RTR, Pass/Stop FilterSet), 메시지 도크에 필터 바 연동. 59개 테스트 통과.
+- **2026-10-31 — Phase 6 J1939 기본 완료**: `STRUCT_29_BIT_ID`/`unGetPGN`/`vSetPGN` → `bsmaster/j1939/` (29비트 ID 분해·조립, PGN 계산, PDU1/PDU2, 메시지 타입). 64개 테스트 통과.
 
 ## 단계
 
@@ -27,7 +28,7 @@
 | Phase 2 | DBC 파싱 + 시그널 인코딩/디코딩 (`Format Converter/DBC2DBFConverter`) | 완료 (2026-10-31) |
 | Phase 3 | 로그 포맷 컨버터 (ASC/BLF/LogToExcel, `Format Converter/`) | 완료 (2026-10-31) |
 | Phase 4 | PySide6 메인 윈도우 틀 (메뉴/도킹/상태표시줄, `Application/`) | 완료 (2026-10-31) |
-| Phase 5+ | 기능 모듈 점진적 이식: Tx/Rx 창, 필터(`Filter/`), NodeSim(`NodeSimEx/`), J1939/UDS | 진행 중 (필터 완료, 2026-10-31) |
+| Phase 5+ | 기능 모듈 점진적 이식: Tx/Rx 창, 필터(`Filter/`), NodeSim(`NodeSimEx/`), J1939/UDS | 진행 중 (필터·J1939 기본 완료, 2026-10-31) |
 
 ## 모듈 매핑 (원본 → 포팅)
 
