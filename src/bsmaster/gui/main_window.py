@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (
     QStatusBar,
 )
 
-from bsmaster.gui.docks import MessageDock, SignalDock, TxDock
+from bsmaster.gui.docks import GraphDock, MessageDock, SignalDock, TxDock
 from bsmaster.logconv.asc import read_asc
 from bsmaster.logconv.blf import read_blf
 from bsmaster.logconv.frames import LogFrame
@@ -56,6 +56,9 @@ class MainWindow(QMainWindow):
         self.tx_dock.frame_created.connect(self._on_tx_frame)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.tx_dock)
 
+        self.graph_dock = GraphDock(self)
+        self.addDockWidget(Qt.DockWidgetArea.BottomDockWidgetArea, self.graph_dock)
+
     def _build_menus(self) -> None:
         menubar = self.menuBar()
 
@@ -69,6 +72,7 @@ class MainWindow(QMainWindow):
         view_menu.addAction(self.message_dock.toggleViewAction())
         view_menu.addAction(self.signal_dock.toggleViewAction())
         view_menu.addAction(self.tx_dock.toggleViewAction())
+        view_menu.addAction(self.graph_dock.toggleViewAction())
 
         sim_menu = menubar.addMenu("시뮬레이션(&S)")
         self._sim_start_action = sim_menu.addAction("시작", self.start_simulation)
@@ -106,7 +110,10 @@ class MainWindow(QMainWindow):
             return
         try:
             with open(path, encoding="utf-8", errors="replace") as f:
-                self.signal_dock.load_dbc_text(f.read())
+                text = f.read()
+            self.signal_dock.load_dbc_text(text)
+            from bsmaster.dbc.parser import parse_text
+            self.graph_dock.set_db(parse_text(text))
             self.statusBar().showMessage(f"DBC 로드: {path}", 5000)
         except Exception as e:
             QMessageBox.warning(self, "DBC 열기 실패", str(e))
@@ -134,6 +141,7 @@ class MainWindow(QMainWindow):
     def _add_frame(self, frame: LogFrame) -> None:
         self.message_dock.add_frame(frame)
         self.signal_dock.show_frame(frame)
+        self.graph_dock.show_frame(frame)
         self.statusBar().showMessage(f"프레임: {self.message_dock.frame_count}개")
 
     def _on_tx_frame(self, frame: LogFrame) -> None:

@@ -289,7 +289,7 @@ TXWindow (사용자 입력)
 | 7 | `Application/` (MFC 메인 프레임) | 225파일 | `bsmaster/gui/` (메인 윈도우 + 메시지/시그널/전송 도크, 시뮬레이션) | 높음 | ✅ 완료 |
 | 8 | `DataTypes/Filter_Datatypes.h`, `Filter/` | 6천 줄 | `bsmaster/core/filters.py` (단일 ID/범위 필터 + Pass/Stop, GUI 연동) | 중간 | ✅ 완료 |
 | 9 | `DataTypes/Log_Datatypes.h`, `FrameProcessor/` | 8.9천 줄 | `bsmaster/core/logging.py` (트리거·필터·ASC/BLF 기록) | 중간 | ✅ 완료 |
-| 10 | `TXWindow/`, `SignalWatch/`, `SigGrphWnd/` | 2.2만 줄 | `bsmaster/gui/` 하위 위젯 | 중간 | 예정 |
+| 10 | `TXWindow/`, `SignalWatch/`, `SigGrphWnd/` | 2.2만 줄 | `bsmaster/gui/` 하위 위젯 (메시지/시그널/Tx 도크 + 시그널 그래프) | 중간 | ✅ 완료 |
 | 11 | `DataTypes/J1939_DataTypes.h`, `UDS_Protocol/` | 4천 줄+ | `bsmaster/j1939/` (29비트 ID 분해·PGN·메시지 타입), `bsmaster/uds/` (서비스·NRC·ISO-TP) | 낮음 | J1939·UDS 기본 완료 |
 | 12 | `NodeSimEx/` | 3.3만 줄 | `bsmaster/nodesim/` (VirtualNode + VirtualBus, DBC 시그널 송신) | 낮음 | ✅ 기본 완료 |
 | 13 | `CAN_*` / `LIN_*` 드라이버 DLL | 20만 줄+ | **이식 제외** | — | 제외 |

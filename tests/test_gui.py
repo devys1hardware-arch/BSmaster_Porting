@@ -122,3 +122,53 @@ def test_message_dock_filter(app):
 
     dock.filter_check.setChecked(False)
     assert dock.frame_count == 3  # 필터 해제
+
+
+def test_signal_series(app):
+    from bsmaster.gui.docks.graph_dock import SignalSeries
+    s = SignalSeries("rpm", "#ff0000", max_samples=3)
+    assert s.y_range() == (0.0, 1.0)
+    s.add(0.0, 10.0)
+    s.add(1.0, 20.0)
+    s.add(2.0, 30.0)
+    s.add(3.0, 40.0)
+    assert len(s.samples) == 3  # 상한 유지
+    lo, hi = s.y_range()
+    assert lo < 20.0 and hi > 40.0
+    s.clear()
+    assert s.samples == []
+
+
+def test_graph_dock(app):
+    from bsmaster.dbc.parser import parse_text
+    from bsmaster.gui.docks.graph_dock import GraphDock
+    dock = GraphDock()
+    dock.set_db(parse_text(TEST_DBC))
+    assert dock.msg_combo.count() == 1
+    dock.track_signal(0x100, "RPM")
+    dock.track_signal(0x100, "RPM")  # 중복 무시
+    assert len(dock._series) == 1
+
+    # RPM = 600 → 75.0 rpm, 두 샘플
+    data = bytes([0x58, 0x02] + [0] * 6)
+    dock.show_frame(LogFrame(timestamp=0.0, msg_id=0x100, data=data))
+    dock.show_frame(LogFrame(timestamp=1.0, msg_id=0x100, data=data))
+    series = dock._series[(0x100, "RPM")]
+    assert [v for _, v in series.samples] == [75.0, 75.0]
+
+    # 다른 ID 프레임은 무시
+    dock.show_frame(LogFrame(timestamp=2.0, msg_id=0x200, data=data))
+    assert len(series.samples) == 2
+
+    # 페인트가 예외 없이 동작
+    dock.plot.resize(400, 300)
+    dock.plot.repaint()
+
+    dock.clear()
+    assert series.samples == []
+
+
+def test_main_window_has_graph_dock(app):
+    from bsmaster.gui.docks.graph_dock import GraphDock
+    win = MainWindow()
+    assert isinstance(win.graph_dock, GraphDock)
