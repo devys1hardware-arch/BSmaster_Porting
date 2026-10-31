@@ -20,6 +20,7 @@
 - **2026-10-31 — Phase 6 J1939 기본 완료**: `STRUCT_29_BIT_ID`/`unGetPGN`/`vSetPGN` → `bsmaster/j1939/` (29비트 ID 분해·조립, PGN 계산, PDU1/PDU2, 메시지 타입). 64개 테스트 통과.
 - **2026-10-31 — Phase 7 UDS 기본 완료**: `bsmaster/uds/` — 서비스 ID(ISO 14229-1), NRC, 요청/응답 파싱, ISO-TP(SF/FF/CF/FC) 인코딩·디코딩. 78개 테스트 통과.
 - **2026-10-31 — Phase 8 NodeSim 기본 완료**: `bsmaster/nodesim/` — `VirtualNode`(on_start/on_stop/on_frame/every/send_can/send_signals) + `VirtualBus`(가상 시간 스케줄러, 결정적 시뮬레이션). 84개 테스트 통과.
+- **2026-10-31 — Phase 9 로깅 완료**: `SLOGTRIGGER`/`SLOGINFO` → `bsmaster/core/logging.py` (시작/정지/셔틀 트리거, 필터 연동, ASC/BLF 저장, append 모드). 93개 테스트 통과.
 
 ## 단계
 
@@ -30,7 +31,7 @@
 | Phase 2 | DBC 파싱 + 시그널 인코딩/디코딩 (`Format Converter/DBC2DBFConverter`) | 완료 (2026-10-31) |
 | Phase 3 | 로그 포맷 컨버터 (ASC/BLF/LogToExcel, `Format Converter/`) | 완료 (2026-10-31) |
 | Phase 4 | PySide6 메인 윈도우 틀 (메뉴/도킹/상태표시줄, `Application/`) | 완료 (2026-10-31) |
-| Phase 5+ | 기능 모듈 점진적 이식: Tx/Rx 창, 필터(`Filter/`), NodeSim(`NodeSimEx/`), J1939/UDS | 진행 중 (필터·J1939·UDS·NodeSim 기본 완료, 2026-10-31) |
+| Phase 5+ | 기능 모듈 점진적 이식: Tx/Rx 창, 필터(`Filter/`), NodeSim(`NodeSimEx/`), J1939/UDS | 진행 중 (필터·J1939·UDS·NodeSim·로깅 완료, 2026-10-31) |
 
 ## 모듈 매핑 (원본 → 포팅)
 
