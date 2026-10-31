@@ -97,6 +97,11 @@ class DbSignal:
     unit: str = ""
     endianness: Endianness = Endianness.INTEL
     desc_values: list[tuple[str, int]] = field(default_factory=list)
+    comment: str = ""
+    # 멀티플렉서: multiplexor=True면 스위치 신호, multiplex_ids는
+    # 이 신호가 속한 스위치 값 목록 (DBC의 m<M> 표기)
+    multiplexor: bool = False
+    multiplex_ids: list[int] = field(default_factory=list)
 
     def __post_init__(self) -> None:
         if not 1 <= self.start_byte <= 8:
@@ -118,6 +123,8 @@ class DbMessage:
     length: int = 8  # m_unMessageLength (DLC)
     extended: bool = False  # m_bMessageFrameFormat
     data_format: Endianness = Endianness.INTEL  # m_nMsgDataFormat (1=Intel)
+    transmitter: str = ""
+    comment: str = ""
 
     def get_signal(self, name: str) -> Optional[DbSignal]:
         for sig in self.signals:
