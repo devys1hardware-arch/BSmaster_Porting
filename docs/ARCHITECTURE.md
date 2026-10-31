@@ -285,7 +285,7 @@ TXWindow (사용자 입력)
 | 3 | `sSIGNALS::vSetSignalValue`, `un64GetBitMask` | — | `bsmaster/core/msgsignal.py` (`encode_signal`, `decode_signal`) | 최우선 | ✅ 완료 |
 | 4 | `Application/MsgSignal.h` (`CMsgSignal`) | — | `bsmaster/core/database.py` | 높음 | 예정 |
 | 5 | `Format Converter/DBC2DBFConverter` (`dbc_dbf_Lexer.l`) | — | `bsmaster/dbc/parser.py` (`DbcDatabase`, Motorola 시작비트 변환 포함) | 높음 | ✅ 완료 |
-| 6 | `Format Converter/AscLogConverter`, `BlfLogConverter`, `BlfLibrary` | — | `bsmaster/logconv/` | 높음 | 스켈레톤 |
+| 6 | `Format Converter/AscLogConverter`, `BlfLogConverter`, `BlfLibrary` | — | `bsmaster/logconv/` (`frames`/`asc`/`blf`, zlib 컨테이너·CAN_MESSAGE 처리) | 높음 | ✅ 완료 |
 | 7 | `Application/` (MFC 메인 프레임) | 225파일 | `bsmaster/gui/main_window.py` (PySide6) | 높음 | 틀 완료 |
 | 8 | `DataTypes/Filter_Datatypes.h`, `Filter/` | 6천 줄 | `bsmaster/core/filter.py` | 중간 | 예정 |
 | 9 | `DataTypes/Log_Datatypes.h`, `FrameProcessor/` | 8.9천 줄 | `bsmaster/core/logging.py` | 중간 | 예정 |

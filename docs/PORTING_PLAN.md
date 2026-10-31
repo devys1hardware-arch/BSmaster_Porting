@@ -14,6 +14,7 @@
 - **2026-10-31 — Phase 0 완료**: 프로젝트 뼈대, 패키지 구조, `CanFrame`/`CanError` 포팅, DBC/logconv 스켈레톤, PySide6 메인 윈도우 틀, 테스트 9개 통과 + GUI 스모크 테스트 통과. `main` 브랜치에 푸시됨.
 - **2026-10-31 — Phase 1 완료**: `sSIGNALS`/`sMESSAGE`/`SMSGENTRY` → `DbSignal`/`DbMessage`/`MessageDatabase`, 시그널 인코딩(`vSetSignalValue`/`un64GetBitMask`) → `encode_signal`/`decode_signal` 포팅. 테스트 23개 통과 (인코딩 벡터·퍼즈 라운드트립 포함).
 - **2026-10-31 — Phase 2 완료**: DBC 파서 (`BO_`/`SG_`/`VAL_`/`SIG_VALTYPE_`/`CM_`/`BU_`, Motorola 시작비트 변환 포함) → `DbcDatabase`. 파싱→인코딩 통합 테스트 포함, 34개 테스트 통과.
+- **2026-10-31 — Phase 3 완료**: 로그 컨버터 — ASC 리더/라이터, BLF 리더/라이터 (원본 `BlfFormat.h` 구조체 레이아웃·zlib 컨테이너·CAN_MESSAGE 그대로 재현). 41개 테스트 통과.
 
 ## 단계
 
@@ -22,7 +23,7 @@
 | Phase 0 | 저장소/프로젝트 뼈대, 패키지 구조, 테스트 틀 | 완료 (2026-10-31) |
 | Phase 1 | 핵심 데이터 타입 (`STCAN_MSG` → `CanFrame` 등, `DataTypes/`, `Include/Struct_CAN_.h`) | 완료 (2026-10-31) |
 | Phase 2 | DBC 파싱 + 시그널 인코딩/디코딩 (`Format Converter/DBC2DBFConverter`) | 완료 (2026-10-31) |
-| Phase 3 | 로그 포맷 컨버터 (ASC/BLF/LogToExcel, `Format Converter/`) | 예정 |
+| Phase 3 | 로그 포맷 컨버터 (ASC/BLF/LogToExcel, `Format Converter/`) | 완료 (2026-10-31) |
 | Phase 4 | PySide6 메인 윈도우 틀 (메뉴/도킹/상태표시줄, `Application/`) | 예정 |
 | Phase 5+ | 기능 모듈 점진적 이식: Tx/Rx 창, 필터(`Filter/`), NodeSim(`NodeSimEx/`), J1939/UDS | 예정 |
 
